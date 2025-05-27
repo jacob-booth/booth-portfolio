@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOTH Portfolio 2025 - Preview</title>
+    <meta name="description" content="Experience the future of portfolio design with glassmorphism aesthetics, interactive particles, and cutting-edge animations.">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        /* BOOTH Portfolio 2025 - Demo Styles */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        body {
+            background: linear-gradient(135deg, #624AF2 0%, #BC4AF2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            cursor: none;
+            min-height: 100vh;
+        }
+        
+        .demo-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 20px;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            padding: 50px 40px;
+            text-align: center;
+            max-width: 700px;
+            width: 100%;
+            margin: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+        }
+        
+        .title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+            letter-spacing: -1px;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+        
+        .description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 35px 25px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .feature-card:hover:before {
+            left: 100%;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .feature-title {
+            color: white;
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .feature-desc {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .custom-cursor {
+            position: fixed;
+            width: 25px;
+            height: 25px;
+            background: radial-gradient(circle, rgba(188, 74, 242, 0.8), rgba(98, 74, 242, 0.3), transparent);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.15s ease;
+            box-shadow: 0 0 20px rgba(188, 74, 242, 0.6);
+        }
+        
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .cta-section {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .cta-button {
+            background: linear-gradient(45deg, #624AF2, #BC4AF2);
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 10px 30px rgba(98, 74, 242, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(98, 74, 242, 0.5);
+        }
+        
+        .status-badges {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .badge {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+        }
+        
+        .repo-link {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 12px 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .repo-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .title { font-size: 2.5rem; }
+            .glass-card { padding: 40px 25px; margin: 15px; }
+            .feature-grid { grid-template-columns: 1fr; gap: 20px; }
+            .feature-card { padding: 30px 20px; }
+            .cta-section { flex-direction: column; }
+            .status-badges { flex-direction: column; align-items: center; }
+            .repo-link { position: static; margin: 20px; }
+        }
+        
+        @media (max-width: 480px) {
+            .title { font-size: 2rem; }
+            .subtitle { font-size: 1.1rem; }
+            .description { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="particles-canvas"></canvas>
+    <div class="custom-cursor" id="cursor"></div>
+    
+    <a href="https://github.com/jacob-booth/booth-portfolio" class="repo-link" target="_blank">
+        📂 View Repository
+    </a>
+    
+    <div class="demo-container">
+        <div class="glass-card">
+            <h1 class="title">BOOTH Portfolio 2025</h1>
+            <p class="subtitle">Futuristic Portfolio Experience - Coming Soon</p>
+            <p class="description">
+                Experience cutting-edge web design with glassmorphism aesthetics, 
+                real-time particle systems, custom cursor interactions, and 
+                performance-optimized animations. This is just a taste of what's coming.
+            </p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">✨</span>
+                    <h3 class="feature-title">Glassmorphism UI</h3>
+                    <p class="feature-desc">
+                        Translucent cards with backdrop blur effects and modern design language
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">🎪</span>
+                    <h3 class="feature-title">GSAP Animations</h3>
+                    <p class="feature-desc">
+                        Professional motion design with smooth scroll-triggered interactions
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">⚡</span>
+                    <h3 class="feature-title">90+ Performance</h3>
+                    <p class="feature-desc">
+                        Lighthouse optimized for speed, accessibility, and best practices
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">🎯</span>
+                    <h3 class="feature-title">Interactive Particles</h3>
+                    <p class="feature-desc">
+                        Real-time particle system responding to mouse movement and interactions
+                    </p>
+                </div>
+            </div>
+            
+            <div class="status-badges">
+                <span class="badge">🚧 In Development</span>
+                <span class="badge">🎨 90% Design Complete</span>
+                <span class="badge">⚡ Performance Optimized</span>
+                <span class="badge">📱 Mobile Ready</span>
+            </div>
+            
+            <div class="cta-section">
+                <a href="mailto:contact@jacobbooth.com" class="cta-button">
+                    Get Early Access
+                </a>
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">
+                    Be the first to experience the full portfolio when it launches
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Enhanced particle system
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+        
+        const particles = [];
+        const mousePos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+        const particleCount = window.innerWidth < 768 ? 30 : 60;
+        
+        // Create particles
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.8,
+                vy: (Math.random() - 0.5) * 0.8,
+                size: Math.random() * 3 + 1,
+                opacity: Math.random() * 0.6 + 0.2,
+                originalSize: Math.random() * 3 + 1
+            });
+        }
+        
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                // Move particles
+                particle.x += particle.vx;
+                particle.y += particle.vy;
+                
+                // Bounce off edges with some randomness
+                if (particle.x < 0 || particle.x > canvas.width) {
+                    particle.vx *= -1;
+                    particle.x = Math.max(0, Math.min(canvas.width, particle.x));
+                }
+                if (particle.y < 0 || particle.y > canvas.height) {
+                    particle.vy *= -1;
+                    particle.y = Math.max(0, Math.min(canvas.height, particle.y));
+                }
+                
+                // Mouse interaction
+                const dx = mousePos.x - particle.x;
+                const dy = mousePos.y - particle.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < 120) {
+                    const force = (120 - distance) / 120;
+                    particle.x -= dx * force * 0.02;
+                    particle.y -= dy * force * 0.02;
+                    particle.size = particle.originalSize * (1 + force * 0.5);
+                } else {
+                    particle.size += (particle.originalSize - particle.size) * 0.1;
+                }
+                
+                // Draw particle with glow
+                ctx.shadowBlur = 15;
+                ctx.shadowColor = 'rgba(255, 255, 255, 0.5)';
+                ctx.beginPath();
+                ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${particle.opacity})`;
+                ctx.fill();
+                ctx.shadowBlur = 0;
+                
+                // Draw connections
+                particles.forEach(otherParticle => {
+                    const distance = Math.sqrt(
+                        (particle.x - otherParticle.x) ** 2 + 
+                        (particle.y - otherParticle.y) ** 2
+                    );
+                    
+                    if (distance < 100) {
+                        ctx.beginPath();
+                        ctx.moveTo(particle.x, particle.y);
+                        ctx.lineTo(otherParticle.x, otherParticle.y);
+                        const opacity = 0.15 * (1 - distance / 100);
+                        ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                });
+            });
+            
+            requestAnimationFrame(animateParticles);
+        }
+        
+        // Enhanced custom cursor
+        const cursor = document.getElementById('cursor');
+        let cursorScale = 1;
+        
+        document.addEventListener('mousemove', (e) => {
+            mousePos.x = e.clientX;
+            mousePos.y = e.clientY;
+            
+            cursor.style.left = e.clientX - 12.5 + 'px';
+            cursor.style.top = e.clientY - 12.5 + 'px';
+        });
+        
+        // Enhanced hover effects
+        document.querySelectorAll('.feature-card, .cta-button, .repo-link').forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                cursorScale = 2;
+                cursor.style.transform = `scale(${cursorScale})`;
+                cursor.style.background = 'radial-gradient(circle, rgba(188, 74, 242, 1), rgba(98, 74, 242, 0.5), transparent)';
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                cursorScale = 1;
+                cursor.style.transform = `scale(${cursorScale})`;
+                cursor.style.background = 'radial-gradient(circle, rgba(188, 74, 242, 0.8), rgba(98, 74, 242, 0.3), transparent)';
+            });
+        });
+        
+        // Hide cursor on mobile
+        if (window.innerWidth <= 768) {
+            cursor.style.display = 'none';
+            document.body.style.cursor = 'auto';
+        }
+        
+        // Start animations
+        animateParticles();
+        
+        // GSAP animations
+        gsap.from('.glass-card', { 
+            duration: 1.2, 
+            y: 60, 
+            opacity: 0, 
+            ease: 'back.out(1.7)' 
+        });
+        
+        gsap.from('.feature-card', { 
+            duration: 0.8, 
+            y: 40, 
+            opacity: 0, 
+            stagger: 0.15, 
+            delay: 0.6,
+            ease: 'power2.out'
+        });
+        
+        gsap.from('.status-badges .badge', { 
+            duration: 0.6, 
+            scale: 0, 
+            opacity: 0, 
+            stagger: 0.1, 
+            delay: 1.2,
+            ease: 'back.out(1.7)'
+        });
+        
+        gsap.from('.cta-section', { 
+            duration: 0.8, 
+            y: 30, 
+            opacity: 0, 
+            delay: 1.5,
+            ease: 'power2.out'
+        });
+        
+        gsap.from('.repo-link', { 
+            duration: 0.6, 
+            x: 50, 
+            opacity: 0, 
+            delay: 0.3,
+            ease: 'power2.out'
+        });
+    </script>
+</body>
+</html> 

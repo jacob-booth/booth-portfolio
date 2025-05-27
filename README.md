@@ -10,6 +10,20 @@
 
 ---
 
+## 🌟 **Experience the Preview Now**
+
+### 🚀 **[✨ LIVE INTERACTIVE DEMO ✨](https://jacob-booth.github.io/booth-portfolio)**
+
+**👆 Click above to experience the portfolio features instantly - no setup required!**
+
+*Try the interactive features:*
+- **🎯 Move your mouse** to interact with the particle system
+- **✨ Hover over cards** to see glassmorphism effects  
+- **🖱️ Experience** the custom cursor and magnetic interactions
+- **📱 Test responsive design** on mobile devices
+
+---
+
 ## 🌟 Project Status
 
 **This project is currently in stealth mode. Stay tuned for updates.**
@@ -21,9 +35,10 @@ We're crafting something extraordinary that will redefine portfolio experiences 
 > *Screenshots and demo videos will be added as development progresses. Get ready for something spectacular!*
 
 ### 🎬 **Interactive Demo**
-<!-- Add live demo link when ready -->
+**[🌐 Experience BOOTH Portfolio Preview](https://jacob-booth.github.io/booth-portfolio)** ← **Live Demo Available Now!**
+
 ```
-🚧 Live Demo: Coming in Q1 2025
+✅ Live Demo: Available Now!
 🎥 Video Preview: In Development  
 📱 Mobile Preview: Testing Phase
 ```
