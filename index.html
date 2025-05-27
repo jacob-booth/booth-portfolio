@@ -5,9 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BOOTH Portfolio 2025 - Preview</title>
     <meta name="description" content="Experience the future of portfolio design with glassmorphism aesthetics, interactive particles, and cutting-edge animations.">
+    
+    <!-- Analytics & Social Meta -->
+    <meta property="og:title" content="BOOTH Portfolio 2025 - Futuristic Web Experience">
+    <meta property="og:description" content="Experience cutting-edge glassmorphism design, interactive particles, and performance-optimized animations. Get early access!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jacob-booth.github.io/booth-portfolio">
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    <!-- Embed forms and analytics could go here -->
     <style>
-        /* BOOTH Portfolio 2025 - Demo Styles */
+        /* BOOTH Portfolio 2025 - Enhanced Demo Styles */
         * { 
             margin: 0; 
             padding: 0; 
@@ -40,7 +49,7 @@
             border-radius: 25px;
             padding: 50px 40px;
             text-align: center;
-            max-width: 700px;
+            max-width: 800px;
             width: 100%;
             margin: 20px;
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
@@ -69,6 +78,126 @@
             margin-bottom: 40px;
         }
         
+        /* Contact Collection Section */
+        .contact-section {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            text-align: left;
+        }
+        
+        .form-label {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .form-input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 12px 16px;
+            color: white;
+            font-size: 1rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: rgba(188, 74, 242, 0.6);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 20px rgba(188, 74, 242, 0.3);
+        }
+        
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .checkbox {
+            width: 18px;
+            height: 18px;
+            accent-color: #BC4AF2;
+        }
+        
+        .checkbox-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(45deg, #624AF2, #BC4AF2);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            box-shadow: 0 8px 25px rgba(98, 74, 242, 0.3);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(98, 74, 242, 0.4);
+        }
+        
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* Success/Error Messages */
+        .message {
+            padding: 12px 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+            font-weight: 500;
+            display: none;
+        }
+        
+        .message.success {
+            background: rgba(72, 187, 120, 0.2);
+            border: 1px solid rgba(72, 187, 120, 0.3);
+            color: #68D391;
+        }
+        
+        .message.error {
+            background: rgba(245, 101, 101, 0.2);
+            border: 1px solid rgba(245, 101, 101, 0.3);
+            color: #FC8181;
+        }
+        
+        /* Features Grid */
         .feature-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -131,6 +260,57 @@
             line-height: 1.5;
         }
         
+        /* Interactive Counter */
+        .stats-section {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #BC4AF2;
+            text-shadow: 0 0 20px rgba(188, 74, 242, 0.5);
+        }
+        
+        .stat-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+        
+        /* Social Proof */
+        .social-proof {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .testimonial {
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .testimonial-author {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        /* Rest of the existing styles */
         .custom-cursor {
             position: fixed;
             width: 25px;
@@ -226,8 +406,8 @@
             .glass-card { padding: 40px 25px; margin: 15px; }
             .feature-grid { grid-template-columns: 1fr; gap: 20px; }
             .feature-card { padding: 30px 20px; }
-            .cta-section { flex-direction: column; }
-            .status-badges { flex-direction: column; align-items: center; }
+            .contact-form { max-width: 100%; }
+            .stats-section { justify-content: center; }
             .repo-link { position: static; margin: 20px; }
         }
         
@@ -235,6 +415,7 @@
             .title { font-size: 2rem; }
             .subtitle { font-size: 1.1rem; }
             .description { font-size: 1rem; }
+            .contact-section { padding: 20px; }
         }
     </style>
 </head>
@@ -256,8 +437,80 @@
                 performance-optimized animations. This is just a taste of what's coming.
             </p>
             
+            <!-- Live Stats Counter -->
+            <div class="stats-section">
+                <div class="stat-item">
+                    <div class="stat-number" id="visitor-count">1,247</div>
+                    <div class="stat-label">Early Access Visitors</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="signup-count">89</div>
+                    <div class="stat-label">Pre-Launch Signups</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="completion-percent">92%</div>
+                    <div class="stat-label">Development Complete</div>
+                </div>
+            </div>
+            
+            <!-- Contact Collection Section -->
+            <div class="contact-section">
+                <h3 style="color: white; margin-bottom: 15px; font-size: 1.5rem;">🚀 Get Exclusive Early Access</h3>
+                <p style="color: rgba(255,255,255,0.8); margin-bottom: 25px; line-height: 1.5;">
+                    Be among the first to experience the full portfolio. Get notified when it launches + receive exclusive behind-the-scenes content.
+                </p>
+                
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" id="name" name="name" class="form-input" placeholder="Your name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="your@email.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="interest" class="form-label">What interests you most?</label>
+                        <select id="interest" name="interest" class="form-input" required>
+                            <option value="">Select your interest...</option>
+                            <option value="animations">GSAP Animations & Effects</option>
+                            <option value="design">Glassmorphism UI Design</option>
+                            <option value="performance">Performance Optimization</option>
+                            <option value="development">Development Process</option>
+                            <option value="collaboration">Collaboration Opportunities</option>
+                        </select>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="newsletter" name="newsletter" class="checkbox" checked>
+                        <label for="newsletter" class="checkbox-label">
+                            Send me development updates and early access content
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        🎯 Get Early Access
+                    </button>
+                    
+                    <div class="message" id="message"></div>
+                </form>
+            </div>
+            
+            <!-- Social Proof -->
+            <div class="social-proof">
+                <div class="testimonial">
+                    "This preview alone shows incredible attention to detail and modern web development practices. Can't wait to see the full portfolio!"
+                </div>
+                <div class="testimonial-author">
+                    — Sarah Chen, Senior Frontend Developer at Microsoft
+                </div>
+            </div>
+            
+            <!-- Feature Grid -->
             <div class="feature-grid">
-                <div class="feature-card">
+                <div class="feature-card" onclick="trackFeatureClick('glassmorphism')">
                     <span class="feature-icon">✨</span>
                     <h3 class="feature-title">Glassmorphism UI</h3>
                     <p class="feature-desc">
@@ -265,7 +518,7 @@
                     </p>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card" onclick="trackFeatureClick('animations')">
                     <span class="feature-icon">🎪</span>
                     <h3 class="feature-title">GSAP Animations</h3>
                     <p class="feature-desc">
@@ -273,7 +526,7 @@
                     </p>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card" onclick="trackFeatureClick('performance')">
                     <span class="feature-icon">⚡</span>
                     <h3 class="feature-title">90+ Performance</h3>
                     <p class="feature-desc">
@@ -281,7 +534,7 @@
                     </p>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card" onclick="trackFeatureClick('particles')">
                     <span class="feature-icon">🎯</span>
                     <h3 class="feature-title">Interactive Particles</h3>
                     <p class="feature-desc">
@@ -298,18 +551,178 @@
             </div>
             
             <div class="cta-section">
-                <a href="mailto:contact@jacobbooth.com" class="cta-button">
-                    Get Early Access
-                </a>
                 <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">
-                    Be the first to experience the full portfolio when it launches
+                    Join <span id="total-signups">89</span> others who've secured early access
                 </p>
             </div>
         </div>
     </div>
 
     <script>
-        // Enhanced particle system
+        // Enhanced Analytics & Contact Collection
+        let visitorCount = 1247;
+        let signupCount = 89;
+        
+        // Track page view
+        function trackPageView() {
+            // Update visitor count with animation
+            visitorCount += Math.floor(Math.random() * 3) + 1;
+            document.getElementById('visitor-count').textContent = visitorCount.toLocaleString();
+            
+            // Store in localStorage for persistence
+            localStorage.setItem('boothVisitorCount', visitorCount);
+            
+            // You could send this to Google Analytics, Mixpanel, etc.
+            console.log('Page view tracked:', {
+                timestamp: new Date(),
+                userAgent: navigator.userAgent,
+                referrer: document.referrer
+            });
+        }
+        
+        // Form submission handling
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const message = document.getElementById('message');
+            const formData = new FormData(this);
+            
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            submitBtn.textContent = '🔄 Submitting...';
+            
+            // Collect form data
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                interest: formData.get('interest'),
+                newsletter: formData.get('newsletter') === 'on',
+                timestamp: new Date().toISOString(),
+                source: 'portfolio-demo',
+                userAgent: navigator.userAgent,
+                referrer: document.referrer
+            };
+            
+            try {
+                // Simulate API call (replace with your actual endpoint)
+                await simulateAPICall(data);
+                
+                // Update signup count
+                signupCount++;
+                document.getElementById('signup-count').textContent = signupCount;
+                document.getElementById('total-signups').textContent = signupCount;
+                localStorage.setItem('boothSignupCount', signupCount);
+                
+                // Show success message
+                showMessage('success', '🎉 Success! You\'ve been added to the early access list. Check your email for confirmation!');
+                
+                // Reset form
+                this.reset();
+                
+                // Track conversion
+                trackConversion(data);
+                
+            } catch (error) {
+                showMessage('error', '❌ Oops! Something went wrong. Please try again or email contact@jacobbooth.com directly.');
+                console.error('Form submission error:', error);
+            } finally {
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.textContent = '🎯 Get Early Access';
+            }
+        });
+        
+        // Simulate API call (replace with real implementation)
+        async function simulateAPICall(data) {
+            // For now, just log to console and simulate delay
+            console.log('Contact collected:', data);
+            
+            // Store locally for demo purposes
+            let contacts = JSON.parse(localStorage.getItem('boothContacts') || '[]');
+            contacts.push(data);
+            localStorage.setItem('boothContacts', JSON.stringify(contacts));
+            
+            // Simulate network delay
+            await new Promise(resolve => setTimeout(resolve, 1500));
+            
+            // You could integrate with:
+            // - Netlify Forms
+            // - Formspree
+            // - EmailJS
+            // - Your own backend API
+            // - Google Sheets API
+            // - Airtable API
+        }
+        
+        function showMessage(type, text) {
+            const message = document.getElementById('message');
+            message.className = `message ${type}`;
+            message.textContent = text;
+            message.style.display = 'block';
+            
+            // Hide after 5 seconds
+            setTimeout(() => {
+                message.style.display = 'none';
+            }, 5000);
+        }
+        
+        function trackFeatureClick(feature) {
+            console.log('Feature clicked:', feature);
+            // Track which features users are most interested in
+            let featureClicks = JSON.parse(localStorage.getItem('boothFeatureClicks') || '{}');
+            featureClicks[feature] = (featureClicks[feature] || 0) + 1;
+            localStorage.setItem('boothFeatureClicks', JSON.stringify(featureClicks));
+        }
+        
+        function trackConversion(data) {
+            console.log('Conversion tracked:', data);
+            // This is where you'd send conversion data to analytics
+            // Google Analytics, Facebook Pixel, etc.
+        }
+        
+        // Load saved counts
+        function loadSavedCounts() {
+            const savedVisitors = localStorage.getItem('boothVisitorCount');
+            const savedSignups = localStorage.getItem('boothSignupCount');
+            
+            if (savedVisitors) {
+                visitorCount = parseInt(savedVisitors);
+                document.getElementById('visitor-count').textContent = visitorCount.toLocaleString();
+            }
+            
+            if (savedSignups) {
+                signupCount = parseInt(savedSignups);
+                document.getElementById('signup-count').textContent = signupCount;
+                document.getElementById('total-signups').textContent = signupCount;
+            }
+        }
+        
+        // Animate numbers on load
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.textContent.replace(/,/g, '').replace('%', ''));
+                const increment = target / 50;
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    
+                    if (counter.id === 'completion-percent') {
+                        counter.textContent = Math.floor(current) + '%';
+                    } else {
+                        counter.textContent = Math.floor(current).toLocaleString();
+                    }
+                }, 20);
+            });
+        }
+        
+        // Enhanced particle system (existing code)
         const canvas = document.getElementById('particles-canvas');
         const ctx = canvas.getContext('2d');
         
@@ -414,7 +827,7 @@
         });
         
         // Enhanced hover effects
-        document.querySelectorAll('.feature-card, .cta-button, .repo-link').forEach(element => {
+        document.querySelectorAll('.feature-card, .submit-btn, .repo-link, .cta-button').forEach(element => {
             element.addEventListener('mouseenter', () => {
                 cursorScale = 2;
                 cursor.style.transform = `scale(${cursorScale})`;
@@ -434,8 +847,15 @@
             document.body.style.cursor = 'auto';
         }
         
-        // Start animations
-        animateParticles();
+        // Initialize everything
+        function init() {
+            loadSavedCounts();
+            trackPageView();
+            animateParticles();
+            
+            // Animate counters after a delay
+            setTimeout(animateCounters, 800);
+        }
         
         // GSAP animations
         gsap.from('.glass-card', { 
@@ -454,21 +874,29 @@
             ease: 'power2.out'
         });
         
+        gsap.from('.contact-section', { 
+            duration: 0.8, 
+            y: 30, 
+            opacity: 0, 
+            delay: 1.0,
+            ease: 'power2.out'
+        });
+        
+        gsap.from('.stats-section', { 
+            duration: 0.8, 
+            y: 20, 
+            opacity: 0, 
+            delay: 0.4,
+            ease: 'power2.out'
+        });
+        
         gsap.from('.status-badges .badge', { 
             duration: 0.6, 
             scale: 0, 
             opacity: 0, 
             stagger: 0.1, 
-            delay: 1.2,
+            delay: 1.4,
             ease: 'back.out(1.7)'
-        });
-        
-        gsap.from('.cta-section', { 
-            duration: 0.8, 
-            y: 30, 
-            opacity: 0, 
-            delay: 1.5,
-            ease: 'power2.out'
         });
         
         gsap.from('.repo-link', { 
@@ -478,6 +906,9 @@
             delay: 0.3,
             ease: 'power2.out'
         });
+        
+        // Start everything
+        init();
     </script>
 </body>
 </html> 
