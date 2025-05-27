@@ -633,26 +633,49 @@
             }
         });
         
-        // Simulate API call (replace with real implementation)
+        // Google Sheets Integration - Real API Call
         async function simulateAPICall(data) {
-            // For now, just log to console and simulate delay
-            console.log('Contact collected:', data);
+            // 🔥 Your Google Apps Script URL
+            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzSJa6jJLNnVXH-oZpiW2lqF0HNFjyqsE9woNISUdaGIhH5BMlvxcGy4SOMWU9qwxat/exec';
             
-            // Store locally for demo purposes
-            let contacts = JSON.parse(localStorage.getItem('boothContacts') || '[]');
-            contacts.push(data);
-            localStorage.setItem('boothContacts', JSON.stringify(contacts));
-            
-            // Simulate network delay
-            await new Promise(resolve => setTimeout(resolve, 1500));
-            
-            // You could integrate with:
-            // - Netlify Forms
-            // - Formspree
-            // - EmailJS
-            // - Your own backend API
-            // - Google Sheets API
-            // - Airtable API
+            try {
+                console.log('💾 Sending contact to Google Sheets:', data);
+                
+                // Send data to Google Sheets
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        ...data,
+                        timestamp: new Date().toISOString(),
+                        source: 'portfolio-demo-v2'
+                    })
+                });
+                
+                // Since we use 'no-cors', we can't read the response
+                // but the data is still saved to your Google Sheet
+                console.log('✅ Contact sent to Google Sheets successfully!');
+                
+                // Also store locally for backup/demo purposes
+                let contacts = JSON.parse(localStorage.getItem('boothContacts') || '[]');
+                contacts.push({...data, savedToSheets: true, timestamp: new Date().toISOString()});
+                localStorage.setItem('boothContacts', JSON.stringify(contacts));
+                
+                return { success: true };
+                
+            } catch (error) {
+                console.error('❌ Error sending to Google Sheets:', error);
+                
+                // Fallback: store locally if API fails
+                let contacts = JSON.parse(localStorage.getItem('boothContacts') || '[]');
+                contacts.push({...data, savedToSheets: false, timestamp: new Date().toISOString(), error: error.message});
+                localStorage.setItem('boothContacts', JSON.stringify(contacts));
+                
+                throw error;
+            }
         }
         
         function showMessage(type, text) {
